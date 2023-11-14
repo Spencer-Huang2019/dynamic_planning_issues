@@ -13,7 +13,8 @@
 ### 问题4：rviz里的点云显示不正确
 #### 1、确定相机内参以及外参是否都正确。
 相机内参和外参计算正确，但依然得到下图所示结果
-![图片名称](images/vision_vrep_4_1.png=500x500)
+<img src="https://github.com/Spencer-Huang2019/dynamic_planning_issues/tree/main/images/vision_vrep_4_1.png" width="300px">
+![图片名称](images/vision_vrep_4_1.png)
 #### 2、把读取的深度值d == 0的判断部分添加 d <= 1e-5，因为通过打印可以看到有很多非常接近零且是负数的值
 修改之后，rviz里显示的点云图像只剩下上半部分，但依然不正确
 #### 3、在图像上取出一个像素坐标点，打印出来的深度值d = 256008749056，很显然不对，太大了。应该编码的问题，但是vrep发布的信息编码方式是32FC1，图像转点云的代码中也是32FC1类型的cv::mat。
